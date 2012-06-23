@@ -362,7 +362,7 @@ static int proc_pid_stack(struct seq_file *m, struct pid_namespace *ns,
 static int proc_pid_schedstat(struct task_struct *task, char *buffer)
 {
 	return sprintf(buffer, "%llu %llu %lu\n",
-			(unsigned long long)task->se.sum_exec_runtime,
+			(unsigned long long)tsk_seruntime(task),
 			(unsigned long long)task->sched_info.run_delay,
 			task->sched_info.pcount);
 }
@@ -1557,7 +1557,7 @@ out:
 	return inode;
 
 out_unlock:
-	iput(inode);
+	iput(inode); 
 	return NULL;
 }
 
@@ -1886,7 +1886,7 @@ static struct dentry *proc_lookupfd_common(struct inode *dir,
 	result = instantiate(dir, dentry, task, &fd);
 out:
 	put_task_struct(task);
-out_no_task:
+out_no_task: 
 	return result;
 }
 
