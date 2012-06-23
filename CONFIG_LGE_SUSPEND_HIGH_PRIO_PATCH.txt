@@ -1,0 +1,5 @@
+arch/arm/configs/thunderc-perf_defconfig:249:CONFIG_LGE_SUSPEND_HIGH_PRIO_PATCH=y
+arch/arm/configs/thunderg-perf_defconfig:319:CONFIG_LGE_SUSPEND_HIGH_PRIO_PATCH=y
+arch/arm/configs/thunderg-vdf-perf_defconfig:318:CONFIG_LGE_SUSPEND_HIGH_PRIO_PATCH=y
+kernel/power/fbearlysuspend.c:129:#ifdef CONFIG_LGE_SUSPEND_HIGH_PRIO_PATCH
+kernel/power/fbearlysuspend.c:172:#ifdef CONFIG_LGE_SUSPEND_HIGH_PRIO_PATCH

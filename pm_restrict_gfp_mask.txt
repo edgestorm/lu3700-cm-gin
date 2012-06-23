@@ -1,0 +1,5 @@
+include/linux/gfp.h:342:extern void pm_restrict_gfp_mask(void);
+kernel/power/hibernate.c:338:	pm_restrict_gfp_mask();
+kernel/power/hibernate.c:460:	pm_restrict_gfp_mask();
+kernel/power/suspend.c:212:	pm_restrict_gfp_mask();
+mm/page_alloc.c:118:void pm_restrict_gfp_mask(void)
