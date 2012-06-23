@@ -781,7 +781,7 @@ int dm_table_add_target(struct dm_table *t, const char *type,
 int dm_table_set_type(struct dm_table *t)
 {
 	unsigned i;
-	unsigned bio_based = 0, request_based = 0;
+	unsigned bio_based = 0, request_based = 0; 
 	struct dm_target *tgt;
 	struct dm_dev_internal *dd;
 	struct list_head *devices;
@@ -1062,14 +1062,16 @@ static void dm_table_set_integrity(struct dm_table *t)
 	if (!prev || !bdev_get_integrity(prev->dm_dev.bdev))
 		goto no_integrity;
 
+#if defined(CONFIG_BLK_DEV_INTEGRITY)
 	blk_integrity_register(dm_disk(t->md),
 			       bdev_get_integrity(prev->dm_dev.bdev));
-
+#endif
 	return;
 
 no_integrity:
+#if defined(CONFIG_BLK_DEV_INTEGRITY)
 	blk_integrity_register(dm_disk(t->md), NULL);
-
+#endif
 	return;
 }
 
